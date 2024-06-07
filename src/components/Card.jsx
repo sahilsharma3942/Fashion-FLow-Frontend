@@ -25,7 +25,8 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
       checkWishlist();
   }, []);
 
-    const handleToggleWishlist = ()=>{
+    const handleToggleWishlist = (e)=>{
+      e.stopPropagation();
       if(isWishlisted){
         axios.delete(`https://fashion-flow-backend.onrender.com/api/v1/user/me/wishlist/${item._id}`,{
           headers:{
@@ -54,7 +55,8 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
       }
     }
 
-    const addToCart = ()=>{
+    const addToCart = (e)=>{
+      e.stopPropagation();
       axios.post(`https://fashion-flow-backend.onrender.com/api/v1/cart/add/${item._id}`,{},{
         headers:{
           Authorization:localStorage.getItem("token")

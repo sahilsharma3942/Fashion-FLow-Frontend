@@ -11,8 +11,8 @@ export const Wishlist = () => {
             headers:{
                 Authorization:localStorage.getItem("token")
             }
-        }).then((res)=>{console.log(res.data.wishlist.products)
-            setWishlistProducts(res.data.wishlist.products);
+        }).then((res)=>{console.log(res?.data?.wishlist?.products)
+            setWishlistProducts(res?.data?.wishlist?.products);
             setLoading(false);
         })
         .catch((err)=>{console.log(err.response.data.message)})
@@ -34,7 +34,7 @@ export const Wishlist = () => {
             <div>
                 {
                     loading==true?<div>...loading</div>:
-                    <div className='flex flex-wrap p-4'>{wishlistProducts.length>0?(
+                    <div className='flex flex-wrap p-4'>{wishlistProducts?(
                         <div>
                             {
                                 wishlistProducts.map((product,index)=>{
