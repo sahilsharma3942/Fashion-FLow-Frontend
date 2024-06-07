@@ -11,10 +11,11 @@ import { Profile } from './components/Profile.jsx'
 import { Wishlist } from './components/Wishlist.jsx'
 import { Cart } from './components/Cart.jsx'
 import { ProductDetails } from './components/ProductDetails.jsx'
+import AuthRoute from './components/AuthRoute.jsx'
 const router = createBrowserRouter([
   {
     path:"/",
-    element:<Homepage/>,
+    element:<AuthRoute><Homepage/></AuthRoute>,
     children:[
       {
         path:"",
