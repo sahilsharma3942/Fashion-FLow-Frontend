@@ -35,7 +35,7 @@ export const Wishlist = () => {
                 {
                     loading==true?<div>...loading</div>:
                     <div className='flex flex-wrap p-4'>{wishlistProducts?(
-                        <div>
+                        <div className='flex flex-wrap p-4'>
                             {
                                 wishlistProducts.map((product,index)=>{
                                     return <Card item={product.product} 

@@ -26,6 +26,7 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
   }, []);
 
     const handleToggleWishlist = (e)=>{
+      e.preventDefault();
       e.stopPropagation();
       if(isWishlisted){
         axios.delete(`https://fashion-flow-backend.onrender.com/api/v1/user/me/wishlist/${item._id}`,{
@@ -56,6 +57,7 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
     }
 
     const addToCart = (e)=>{
+      e.preventDefault();
       e.stopPropagation();
       axios.post(`https://fashion-flow-backend.onrender.com/api/v1/cart/add/${item._id}`,{},{
         headers:{
@@ -65,8 +67,9 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
       .catch((err)=>{console.log(err?.response?.data?.message)})
     }
     return (
-        <Link to={`/productDetails/${item._id}`}>
+        
           <div className="w-60 m-5 p-2 shadow-sm rounded-lg hover:scale-110 transition-transform duration-300 hover:shadow-lg" key={id}>
+            <Link to={`/productDetails/${item._id}`}>
                 <img src={item.imageUrl} alt={item.name} className="w-full h-48 rounded-t-lg" />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold">{item.name}</h3>
@@ -83,7 +86,8 @@ export const Card = ({item,id, removeFromWishlist, addToWishlist}) => {
                     )}
                   </button>
                 </div>
+              </Link>
         </div>        
-        </Link>
+        
       );
 }
